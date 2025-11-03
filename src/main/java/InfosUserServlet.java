@@ -1,5 +1,7 @@
 
+import fr.devavance.metier.beans.User;
 import java.io.IOException;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -38,8 +40,17 @@ public class InfosUserServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
        
+        createNewUser();
       
+       RequestDispatcher requestDispatcher=request.getRequestDispatcher("infos_user.jsp");
+       requestDispatcher.forward(request, response);
+    }
     
+    public void createNewUser(){
+        User user = new User();
+        user.setUserName("alan");
+        user.setProfil("admin");
+        user.setPassword("mp2023t");
     }
 
   
